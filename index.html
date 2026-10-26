@@ -95,6 +95,7 @@ section.band > .wrap{padding-block:88px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .split h2{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:700;margin-bottom:22px}
 .split .text p + p{margin-top:16px}
+.split .text h2 + p{margin-top:0}
 .split .text p{max-width:34em}
 .facts{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .fact{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}
@@ -102,6 +103,19 @@ section.band > .wrap{padding-block:88px}
 .fact dd{margin:0;font-weight:500}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font-family:var(--mono);font-size:.8rem;padding:4px 10px;border:1px solid var(--line);border-radius:4px;font-weight:400}
+
+.tech{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.tech-cat{padding:28px 28px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.tech-cat h3{font-size:1.25rem;font-weight:700;margin:6px 0 10px}
+.tech-cat .port{font-family:var(--mono);font-size:.74rem;color:var(--signal)}
+.prod{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 0;border-top:1px dashed var(--line)}
+.prod > div{min-width:0}
+.prod strong{display:block;font-weight:600}
+.prod small{display:block;color:var(--muted);font-size:.88rem;line-height:1.45;margin-top:2px}
+.badge{flex:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px;color:var(--accent);background:color-mix(in srgb,var(--accent) 13%,transparent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+.legend{display:flex;align-items:center;gap:10px;margin-top:18px;color:var(--muted);font-size:.9rem}
+.certs{margin-top:44px;display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.certs .chips{gap:8px}
 
 .contact{background:var(--accent);color:var(--accent-ink)}
 .contact > .wrap{padding-block:80px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
@@ -122,6 +136,7 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
   .hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:48px 56px}
   .section-head{grid-template-columns:1fr;gap:14px}
   .services{grid-template-columns:1fr 1fr}
+  .certs{grid-template-columns:1fr;gap:12px}
   .steps{grid-template-columns:1fr 1fr;gap:32px 24px}
   .split,.contact > .wrap{grid-template-columns:1fr;gap:40px}
 }
@@ -129,6 +144,8 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
   body{font-size:16px}
   nav{display:none}
   .services{grid-template-columns:1fr}
+  .tech{grid-template-columns:1fr}
+  .tech-cat{padding:24px 20px 18px}
   .steps{grid-template-columns:1fr}
   section.band > .wrap{padding-block:60px}
   .fact{grid-template-columns:1fr;gap:4px}
@@ -154,6 +171,7 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
     <nav aria-label="Hoofdmenu">
       <a href="#diensten">Diensten</a>
       <a href="#werkwijze">Werkwijze</a>
+      <a href="#technologie">Technologie</a>
       <a href="#over">Over</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -207,7 +225,7 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
           <ul><li>Remote access voor thuiswerkers</li><li>Site-to-site tunnels tussen locaties</li><li>MFA en certificaten</li></ul>
         </article>
         <article class="svc">
-          <span class="port">NGFW · UTM</span>
+          <span class="port">FortiGate · Palo Alto · Cisco · Check Point</span>
           <h3>Firewalls plaatsen</h3>
           <p>Levering, installatie en inrichting van firewalls, afgestemd op hoe uw organisatie werkt.</p>
           <ul><li>Selectie van de juiste hardware</li><li>Policies op basis van least privilege</li><li>IPS, applicatie- en webfilter</li></ul>
@@ -216,7 +234,7 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
           <span class="port">Explicit · Transparent</span>
           <h3>Proxy en webverkeer</h3>
           <p>Controle over uitgaand verkeer, met inzicht in wat er het netwerk verlaat.</p>
-          <ul><li>Explicit en transparent proxy</li><li>SSL-inspectie waar het nodig is</li><li>Proxy chaining en load balancing</li></ul>
+          <ul><li>Explicit en transparent proxy</li><li>SSL-inspectie waar het nodig is</li><li>Proxy chaining en load balancing</li><li>Cloud proxy met Zscaler of Cisco Umbrella</li></ul>
         </article>
         <article class="svc">
           <span class="port">VLAN · Zones</span>
@@ -248,10 +266,55 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
       </div>
       <div class="steps">
         <div class="step"><h3>Kennismaking</h3><p>We bespreken uw situatie, wensen en wat er nu al draait.</p></div>
-        <div class="step"><h3>Inventarisatie</h3><p>Ik breng uw netwerk, verkeersstromen en risico's in kaart.</p></div>
+        <div class="step"><h3>Inventarisatie</h3><p>Wij brengen uw netwerk, verkeersstromen en risico's in kaart.</p></div>
         <div class="step"><h3>Ontwerp</h3><p>U krijgt een voorstel met aanpak, planning en kosten.</p></div>
         <div class="step"><h3>Implementatie</h3><p>Plaatsing en configuratie, met een vooraf afgesproken onderhoudsvenster.</p></div>
         <div class="step"><h3>Overdracht</h3><p>Documentatie, uitleg aan uw team en desgewenst doorlopend beheer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="technologie">
+    <div class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">Technologie</p><h2 style="margin-top:10px">Platformen waar Tutusnet mee werkt</h2></div>
+        <p>Tutusnet is niet gebonden aan één merk. Wij werken met de oplossing die al bij u draait, of adviseren de oplossing die het beste past.</p>
+      </div>
+      <div class="tech">
+        <article class="tech-cat"><span class="port">NGFW</span><h3>Firewalls</h3>
+          <div class="prod"><div><strong>Fortinet FortiGate</strong><small>Next-generation firewall op FortiOS, inclusief SSL-VPN en IPsec</small></div></div>
+          <div class="prod"><div><strong>Palo Alto Networks NGFW</strong><small>PA-Series en VM-Series op PAN-OS</small></div></div>
+          <div class="prod"><div><strong>Cisco Secure Firewall</strong><small>Firepower Threat Defense met Firewall Management Center, en Cisco ASA</small></div></div>
+          <div class="prod"><div><strong>Check Point Quantum</strong><small>Security Gateways met centraal beleidsbeheer</small></div></div>
+        </article>
+        <article class="tech-cat"><span class="port">Beheer · Logging</span><h3>Centraal beheer en logging</h3>
+          <div class="prod"><div><strong>Palo Alto Panorama</strong><small>Centraal beheer van policies en logging voor Palo Alto-firewalls</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiManager</strong><small>Centraal configuratie- en policybeheer voor Fortinet-apparatuur</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiAnalyzer</strong><small>Centrale logging, rapportage en analyse van beveiligingsincidenten</small></div></div>
+        </article>
+        <article class="tech-cat"><span class="port">NAC · MFA · VPN-client</span><h3>Toegang en identiteit</h3>
+          <div class="prod"><div><strong>Cisco ISE</strong><small>Network access control met 802.1X, profiling en gastentoegang</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiNAC</strong><small>Zicht op en toegangscontrole voor alle apparaten in het netwerk</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiAuthenticator</strong><small>MFA, RADIUS en LDAP, single sign-on en certificaatbeheer</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiClient EMS</strong><small>Centraal beheer van FortiClient voor VPN, ZTNA en endpoint-beleid</small></div></div>
+          <div class="prod"><div><strong>Cisco AnyConnect</strong><small>Nu Cisco Secure Client: VPN-client voor remote access</small></div></div>
+        </article>
+        <article class="tech-cat"><span class="port">SSE · DNS</span><h3>Cloud security en webverkeer</h3>
+          <div class="prod"><div><strong>Zscaler</strong><small>Internet Access (ZIA) en Private Access (ZPA) als cloud proxy en zero trust</small></div></div>
+          <div class="prod"><div><strong>Cisco Umbrella</strong><small>Beveiliging op DNS-niveau en een cloudgebaseerde secure web gateway</small></div></div>
+        </article>
+        <article class="tech-cat"><span class="port">ADC · Proxy · WAF</span><h3>Load balancing en applicaties</h3>
+          <div class="prod"><div><strong>F5 BIG-IP</strong><small>LTM, APM en ASM, en explicit proxy</small></div></div>
+          <div class="prod"><div><strong>NetScaler ADC</strong><small>Voorheen Citrix ADC: load balancing, NetScaler Gateway voor remote access en web application firewall</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiADC</strong><small>Application delivery, load balancing en web application firewall</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiWeb</strong><small>Web application firewall voor websites en API's</small></div></div>
+        </article>
+        <article class="tech-cat"><span class="port">Switching · Mail · Detectie</span><h3>Netwerk, e-mail en detectie</h3>
+          <div class="prod"><div><strong>Fortinet FortiSwitch</strong><small>Switches die u beheert vanuit de FortiGate</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiMail</strong><small>Beveiliging van e-mail tegen spam, phishing en malware</small></div></div>
+          <div class="prod"><div><strong>Fortinet FortiSandbox</strong><small>Analyse van verdachte bestanden in een afgeschermde omgeving</small></div></div>
+          <div class="prod"><div><strong>Cisco Secure Network Analytics</strong><small>Voorheen Stealthwatch: inzicht in afwijkend netwerkverkeer</small></div></div>
+        </article>
       </div>
     </div>
   </section>
@@ -260,13 +323,15 @@ footer .mono{font-family:var(--mono);font-size:.78rem}
     <div class="wrap split">
       <div class="text">
         <p class="eyebrow">Over Tutusnet</p>
-        <h2 style="margin-top:10px">Specialist in netwerkbeveiliging</h2>
-        <p>Tutusnet is opgericht door Mattijn, network security engineer met specialisatie in netwerken, VPN, firewalls en proxy's.</p>
-        <p>Geen groot bureau met wisselende gezichten: u werkt direct met de specialist die uw omgeving ontwerpt en bouwt. Dat houdt de lijnen kort en de kennis waar hij hoort.</p>
+        <h2 style="margin-top:10px">Specialisten in netwerkbeveiliging</h2>
+        <p>Tutusnet is een adviesbureau gespecialiseerd in netwerkbeveiliging. Wij ontwerpen, implementeren en beheren beveiligingsoplossingen voor organisaties die hoge eisen stellen aan de veiligheid en beschikbaarheid van hun netwerk.</p>
+        <p>Ons team heeft ervaring opgedaan bij de overheid, vitale infrastructuur en internationale bedrijven. Die ervaring vormt de basis voor een gestructureerde aanpak: een grondige analyse, een gedocumenteerd ontwerp en een gecontroleerde implementatie.</p>
+        <p>Elke opdrachtgever krijgt een vaste contactpersoon die de omgeving kent, van ontwerp tot beheer. Tutusnet werkt leveranciersonafhankelijk en adviseert de oplossing die past bij uw organisatie.</p>
       </div>
       <dl class="facts" style="margin:0">
         <div class="fact"><dt>Specialisatie</dt><dd>VPN, firewalls, proxy's en netwerkontwerp</dd></div>
-        <div class="fact"><dt>Technologie</dt><dd><div class="chips"><span class="chip">Fortinet</span><span class="chip">Cisco</span><span class="chip">F5 BIG-IP</span></div></dd></div>
+        <div class="fact"><dt>Merken</dt><dd><div class="chips"><span class="chip">Fortinet</span><span class="chip">Palo Alto</span><span class="chip">Cisco</span><span class="chip">Check Point</span><span class="chip">F5</span><span class="chip">NetScaler</span><span class="chip">Zscaler</span></div></dd></div>
+        <div class="fact"><dt>Aanpak</dt><dd>Leveranciersonafhankelijk, met vaste contactpersoon</dd></div>
         <div class="fact"><dt>Werkgebied</dt><dd>Heel Nederland, op locatie en op afstand</dd></div>
         <div class="fact"><dt>Voor wie</dt><dd>MKB, overheid en IT-teams die tijdelijk extra kennis nodig hebben</dd></div>
       </dl>
